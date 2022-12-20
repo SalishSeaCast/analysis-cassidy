@@ -136,3 +136,12 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Ignore all the .nc files
+*.nc
+
+# Also ignore graphics
+*.png
+
+# Ignore data files
+*.csv
