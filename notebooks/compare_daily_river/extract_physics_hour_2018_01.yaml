@@ -1,0 +1,27 @@
+# reshapr extract processing configuration for day-averaged temperature
+# and salinity fields in Salish Sea during the entire year of 2018
+
+dataset:
+  model profile: SalishSeaCast-202111-salish.yaml
+  time base: hour
+  variables group: physics tracers
+
+dask cluster: salish_cluster.yaml
+
+start date: 2018-01-01
+end date: 2018-03-31
+
+extract variables:
+  - votemper
+  - vosaline
+
+selection:
+  depth:
+    depth max: 20
+  grid y:
+    y min: 0
+
+extracted dataset:
+  name: SalishSeaCast_day_avg_physics
+  description: Day-averaged temperature and salinity extracted from SalishSeaCast v202111 hindcast
+  dest dir: /ocean/cdonaldson/compare_daily_river
