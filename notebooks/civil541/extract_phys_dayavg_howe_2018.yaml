@@ -1,0 +1,32 @@
+# reshapr extract processing configuration for day-averaged temperature
+# and salinity fields in northern Salish Sea during event described in
+# Evans, et al (2019)
+
+dataset:
+  model profile: SalishSeaCast-201905.yaml
+  time base: day
+  variables group: physics tracers
+
+dask cluster: salish_cluster.yaml
+
+start date: 2018-01-01
+end date: 2018-12-31
+
+extract variables:
+  - votemper
+  - vosaline
+
+selection:
+  # depth:
+  #   depth max: 20
+  grid y:
+    y min: 500
+    y max: 540
+  grid x:
+    x min: 355
+    x max: 395
+
+extracted dataset:
+  name: HoweSound_dayavg_phys
+  description: Day-averaged temperature and salinity extracted from SalishSeaCast v201905 hindcast
+  dest dir: /ocean/cdonaldson/civil541
