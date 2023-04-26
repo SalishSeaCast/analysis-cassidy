@@ -1,0 +1,31 @@
+# reshapr extract processing configuration for day-averaged temperature
+# and salinity fields in northern Salish Sea during event described in
+# Evans, et al (2019)
+
+dataset:
+  model profile: SalishSeaCast-201905.yaml
+  time base: hour
+  variables group: v velocity
+
+dask cluster: salish_cluster.yaml
+
+start date: 2019-01-01
+end date: 2019-12-31
+
+extract variables:
+  - vomecrty
+
+selection:
+  # depth:
+  #   depth max: 20
+  grid y:
+    y min: 500
+    y max: 540
+  grid x:
+    x min: 355
+    x max: 395
+
+extracted dataset:
+  name: HoweSound_hravg_vvel
+  description: Hour-averaged v vel extracted from SalishSeaCast v201905 hindcast
+  dest dir: /ocean/cdonaldson/civil541
