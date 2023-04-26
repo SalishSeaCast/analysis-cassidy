@@ -4,8 +4,8 @@
 
 dataset:
   model profile: SalishSeaCast-201905.yaml
-  time base: day
-  variables group: u velocity
+  time base: hour
+  variables group: v velocity
 
 dask cluster: salish_cluster.yaml
 
@@ -13,7 +13,7 @@ start date: 2018-01-01
 end date: 2018-12-31
 
 extract variables:
-  - uvel
+  - vomecrty
 
 selection:
   # depth:
@@ -26,6 +26,6 @@ selection:
     x max: 395
 
 extracted dataset:
-  name: HoweSound_dayavg_uvel
-  description: Day-averaged u vel extracted from SalishSeaCast v201905 hindcast
+  name: HoweSound_hravg_vvel
+  description: Hour-averaged v vel extracted from SalishSeaCast v201905 hindcast
   dest dir: /ocean/cdonaldson/civil541
