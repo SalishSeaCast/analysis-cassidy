@@ -142,6 +142,7 @@ cython_debug/
 
 # Also ignore graphics
 *.png
+*.gif
 
 # Ignore data files
 *.csv
