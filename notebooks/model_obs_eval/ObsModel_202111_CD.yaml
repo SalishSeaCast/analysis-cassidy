@@ -7,28 +7,29 @@ filebase:
   202111
 
 outdir:
-  /data/sallen/results/MEOPAR/202111/ObsModel/
+  # /data/sallen/results/MEOPAR/202111/ObsModel/
+  /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/model_obs_eval
 
 flen:    # number of days per file
   1
 
 filemap:
-  nitrate:
-     biol_T
-  silicon:
-     biol_T
-  ammonium:
-     biol_T
-  diatoms:
-     biol_T
-  flagellates:
-     biol_T
+  # nitrate:
+  #    biol_T
+  # silicon:
+  #    biol_T
+  # ammonium:
+  #    biol_T
+  # diatoms:
+  #    biol_T
+  # flagellates:
+  #    biol_T
   vosaline:
      grid_T
   votemper:
      grid_T
-  dissolved_oxygen:
-     chem_T
+  # dissolved_oxygen:
+  #    chem_T
 
 fdict:     # time resolution in hours
   biol_T:
