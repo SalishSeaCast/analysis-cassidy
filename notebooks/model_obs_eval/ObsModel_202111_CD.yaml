@@ -61,4 +61,6 @@ meshPath:
   /home/sallen/MEOPAR/grid/mesh_mask202108.nc
 
 filename:
-  HomathkoPoly_03_IOSRosetteBottle_08032023.csv
+'ElwhaPoly_01_BCLightstation_08032023.csv'
+  # HomathkoPoly_03_IOSRosetteBottle_08032023.csv
+  # ElwhaPoly_03_IOSRosetteBottle_08032023.csv
