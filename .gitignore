@@ -160,3 +160,5 @@ notebooks/river_dye_trace/upd_namelist/namelist_cfg
 notebooks/river_dye_trace/res2_namelist/namelist_top_ref
 notebooks/river_dye_trace/res2_namelist/namelist_top_cfg
 notebooks/river_dye_trace/res2_namelist/namelist_smelt_ref
+notebooks/river_dye_trace/.vscode/settings.json
+notebooks/model_obs_eval/.vscode/settings.json
