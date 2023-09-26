@@ -61,6 +61,17 @@ meshPath:
   /home/sallen/MEOPAR/grid/mesh_mask202108.nc
 
 filename:
-'ElwhaPoly_01_BCLightstation_08032023.csv'
+  # ElwhaPoly_01_BCLightstation_08032023.csv
+  # ElwhaPoly_03_IOSRosetteBottle_08032023.csv
+  ElwhaPoly_04_IOSCTDProfile_08032023.csv
+  # HomathkoPoly_01_HakaiProfiles_08032023.csv
+  # HomathkoPoly_03_IOSRosetteBottle_08032023.csv
+  # HomathkoPoly_04_IOSCTDProfile_08032023.csv
+  # SquamishPoly_01_IOSRosetteBottle_08032023.csv
+  # SquamishPoly_02_IOSCTSProfile_08032023.csv
+
+  # old
+  # ElwhaPoly_01_BCLightstation_08032023.csv
   # HomathkoPoly_03_IOSRosetteBottle_08032023.csv
   # ElwhaPoly_03_IOSRosetteBottle_08032023.csv
+  # SquamishPoly_01_IOSRosetteBottle_08032023.csv
