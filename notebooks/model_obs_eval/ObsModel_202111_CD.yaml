@@ -70,8 +70,15 @@ filename:
   # SquamishPoly_01_IOSRosetteBottle_08032023.csv
   # SquamishPoly_02_IOSCTSProfile_08032023.csv  # also returns empty; somethign is up with the IOS CTD
 
+  # Polysel_data_2023.csv
+  # Polysel_data_2022.csv
+  # Polysel_data_2021.csv
+  # Polysel_data_2020.csv
   # Polysel_data_2019.csv
-  Polysel_data_2023.csv
+  # Polysel_data_2018.csv
+
+  Elwha_try.csv
+
 
   # old
   # ElwhaPoly_01_BCLightstation_08032023.csv
