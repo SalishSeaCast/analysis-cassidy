@@ -55,12 +55,14 @@ sqldir:
   /ocean/shared/SalishSeaCastData/DFO/BOT/
 
 CIOOSdir:
-  /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/model_obs_eval/CIOOS
+  /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/model_obs_eval
 
 meshPath:
   /home/sallen/MEOPAR/grid/mesh_mask202108.nc
 
 filename:
+  # CIOOS_2007.csv CIOOS_2008.csv CIOOS_2009.csv CIOOS_2010.csv CIOOS_2011.csv CIOOS_2012.csv CIOOS_2013.csv CIOOS_2014.csv CIOOS_2015.csv CIOOS_2016.csv CIOOS_2017.csv CIOOS_2018.csv CIOOS_2019.csv CIOOS_2020.csv CIOOS_2021.csv CIOOS_2022.csv CIOOS_2023.csv
+  CIOOS_2007_2023.csv
   # ElwhaPoly_01_BCLightstation_08032023.csv
   # ElwhaPoly_03_IOSRosetteBottle_08032023.csv
   # ElwhaPoly_04_IOSCTDProfile_08032023.csv  # returns empty csv for some reason
@@ -76,12 +78,3 @@ filename:
   # Polysel_data_2020.csv
   # Polysel_data_2019.csv
   # Polysel_data_2018.csv
-
-  Elwha_try.csv
-
-
-  # old
-  # ElwhaPoly_01_BCLightstation_08032023.csv
-  # HomathkoPoly_03_IOSRosetteBottle_08032023.csv
-  # ElwhaPoly_03_IOSRosetteBottle_08032023.csv
-  # SquamishPoly_01_IOSRosetteBottle_08032023.csv
