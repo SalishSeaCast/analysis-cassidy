@@ -1,10 +1,10 @@
 # Yaml file for 202111 series of comparison script runs
 
 PATH:
-  /results2/SalishSea/nowcast-green.202111
+  /results2/SalishSea/nowcast-green.201905
 
 filebase:
-  202111
+  201905R
 
 outdir:
   # /data/sallen/results/MEOPAR/202111/ObsModel/
