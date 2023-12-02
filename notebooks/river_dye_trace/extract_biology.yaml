@@ -1,0 +1,33 @@
+# Reshapr configuration to extract day-averages of interesting biology variables
+# near Iona Island wastewater outfall
+
+dataset:
+  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace.yaml
+  time base: day
+  variables group: biology
+
+dask cluster: salish_cluster.yaml
+
+start date: 2018-01-01
+end date: 2018-01-02
+extract variables:
+  - ammonium
+  - nitrate
+  - diatoms
+
+selection:
+  depth:
+    # NOTE: use depth level numbers, not depths in meters
+    depth max: 30
+  grid y:
+    y min: 430
+    y max: 471
+  grid x:
+    x min: 280
+    x max: 321
+
+extracted dataset:
+  name: SalishSeaCast_wastewater_day_avg_biology
+  description: Day-averaged ammonium, nitrate & diatoms extracted from SalishSeaCast v202111
+               NEMO model with wastewater outfalls
+  dest dir: /ocean/cdonaldson/research_runs/dye_tracers/extractions
