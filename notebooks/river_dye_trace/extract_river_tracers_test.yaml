@@ -1,0 +1,30 @@
+# Reshapr configuration to extract day-averages of interesting biology variables
+# near Iona Island wastewater outfall
+
+dataset:
+  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace.yaml
+  time base: day
+  variables group: physics tracers
+
+dask cluster: salish_cluster.yaml
+
+start date: 2023-03-01
+end date: 2023-03-02
+extract variables:
+  - vosaline
+
+selection:
+  depth:
+    # NOTE: use depth level numbers, not depths in meters
+    depth max: 30
+  grid y:
+    y min: 430
+    y max: 471
+  grid x:
+    x min: 280
+    x max: 321
+
+extracted dataset:
+  name: SalishSeaCast_river_trace_day_avg_river_tracers
+  description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
+  dest dir: /ocean/cdonaldson/research_runs/dye_tracers/extractions
