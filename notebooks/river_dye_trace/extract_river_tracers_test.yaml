@@ -2,16 +2,16 @@
 # near Iona Island wastewater outfall
 
 dataset:
-  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace.yaml
+  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-2.yaml
   time base: day
-  variables group: physics tracers
+  variables group: river tracers
 
 dask cluster: salish_cluster.yaml
 
 start date: 2023-03-01
 end date: 2023-03-02
 extract variables:
-  - vosaline
+  - fraser_river
 
 selection:
   depth:

@@ -27,7 +27,7 @@ geo ref dataset:
 extraction time origin: 2007-01-01
 
 results archive:
-    path: /ocean/cdonaldson/research_runs/dye_tracers/monthly_phys_trc
+  path: /ocean/cdonaldson/research_runs/dye_tracers/monthly_phys_trc
   datasets:
     day:
       physics tracers:
@@ -43,9 +43,6 @@ results archive:
       physics tracers:
         file pattern: "{ddmmmyy}/SalishSea_1h_{yyyymmdd}_{yyyymmdd}_grid_T.nc"
         depth coord: deptht
-      river tracers:
-        file pattern: "{ddmmmyy}/SalishSea_1h_{yyyymmdd}_{yyyymmdd}_rivr_T.nc"
-        depth coord: deptht
       turbulence:
         file pattern: "{ddmmmyy}/SalishSea_1h_{yyyymmdd}_{yyyymmdd}_grid_W.nc"
         depth coord: depthw
@@ -60,4 +57,7 @@ results archive:
         depth coord: deptht
       w velocity:
         file pattern: "{ddmmmyy}/SalishSea_1h_{yyyymmdd}_{yyyymmdd}_grid_W.nc"
+        depth coord: depthw
+      river tracers:
+        file pattern: "{ddmmmyy}/SalishSea_1h_{yyyymmdd}_{yyyymmdd}_rivr_T.nc"
         depth coord: depthw
