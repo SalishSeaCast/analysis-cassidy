@@ -30,13 +30,13 @@ selection:
     # NOTE: use depth level numbers, not depths in meters
     depth max: 40
   grid y:
-    y min: 268
-    y max: 348
+    y min: 98
+    y max: 178
   grid x:
-    x min: 316
-    x max: 396
+    x min: 271
+    x max: 351
 
 extracted dataset:
-  name: SalishSeaCast_river_trace_day_avg_river_tracers_Nooksack_region
+  name: SalishSeaCast_river_trace_day_avg_river_tracers_Snohomish_region
   description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
   dest dir: /ocean/cdonaldson/research_runs/dye_tracers/extractions
