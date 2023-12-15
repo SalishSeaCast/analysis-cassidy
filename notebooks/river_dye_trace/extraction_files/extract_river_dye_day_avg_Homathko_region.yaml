@@ -30,11 +30,11 @@ selection:
     # NOTE: use depth level numbers, not depths in meters
     depth max: 40
   grid y:
-    y min: 494
-    y max: 574
+    y min: 818
+    y max: 898
   grid x:
-    x min: 318
-    x max: 398
+    x min: 253
+    x max: 333
 
 extracted dataset:
   name: SalishSeaCast_river_trace_day_avg_river_tracers_Homathko_region
