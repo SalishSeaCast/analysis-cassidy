@@ -8,8 +8,8 @@ dataset:
 
 dask cluster: salish_cluster.yaml
 
-start date: 2017-01-01
-end date: 2017-01-27
+start date: 2017-01-13
+end date: 2017-01-20
 extract variables:
   - nooksack_river
   - skagit_river
@@ -28,7 +28,7 @@ extract variables:
 selection:
   depth:
     # NOTE: use depth level numbers, not depths in meters
-    depth max: 1
+    depth max: 5
   grid y:
     y min: 0
     y max: 898
@@ -37,6 +37,6 @@ selection:
     x max: 398
 
 extracted dataset:
-  name: SalishSeaCast_river_trace_day_avg_alldom_surface_rivers
+  name: SalishSeaCast_river_trace_day_avg_alldom_surface_rivers_test
   description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
   dest dir: /ocean/cdonaldson/research_runs/long_dye_tracers/extractions
