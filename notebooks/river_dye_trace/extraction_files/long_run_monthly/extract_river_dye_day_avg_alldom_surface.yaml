@@ -1,5 +1,5 @@
 # Reshapr configuration to extract day-averages of river dye variables
-# Nooksack region
+# all regions
 
 dataset:
   model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-long_run.yaml
@@ -8,8 +8,8 @@ dataset:
 
 dask cluster: salish_cluster.yaml
 
-start date: 2017-01-13
-end date: 2017-01-20
+start date: 2017-01-01
+end date: 2017-04-20
 extract variables:
   - nooksack_river
   - skagit_river
