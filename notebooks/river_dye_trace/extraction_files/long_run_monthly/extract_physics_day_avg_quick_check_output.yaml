@@ -4,26 +4,15 @@
 dataset:
   model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-long_run.yaml
   time base: day
-  variables group: river tracers
+  variables group: physics tracers
 
 dask cluster: salish_cluster.yaml
 
 start date: 2019-01-11
 end date: 2019-01-11
 extract variables:
-  # - nooksack_river
-  # - skagit_river
-  # - snohomish_river
-  # - nisqually_river
-  # - elwha_river
-  # - cowichan_river
-  # - nanaimo_river
-  # - puntledge_river
-  # - salmon_river
-  # - homathko_river
-  # - squamish_river
-  - fraser_river
-  # - other_rivers
+  - vosaline
+  - votemper
 
 selection:
   depth:
