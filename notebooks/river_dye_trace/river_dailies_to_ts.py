@@ -8,7 +8,10 @@ from datetime import datetime
 import salishsea_tools.river_202108 as rivers  # if you want to find river inputs for a different (future?) version of rivers, you'll have to change this the files_between_dates fn!
 
 rlist_dict = {'test': [['fraser', 'Fraser'], ['skagit', 'Skagit1']],
-               'test2': [['fraser', 'Fraser'], ['skagit', 'Skagit1']]}
+              'fraser': [['fraser', 'Fraser']],
+              'Cassidy': [['fraser', 'Nooksack'], ['skagit', 'Skagit1'], ['skagit', 'SnohomishAllenQuilceda'], ['puget', 'NisquallyMcAllister'], \
+                          ['jdf', 'Elwha'], ['evi_s', 'Cowichan1'], ['evi_s', 'Nanaimo1'], ['evi_s', 'Puntledge'], ['evi_n', 'SalmonSayward'], ['bute', 'Homathko'], \
+                            ['howe', 'Squamish']]}
 
 def main(start_str, end_str, source_directory, save_name, rlist_call):
     # Check if the correct number of arguments is provided
@@ -89,7 +92,7 @@ def main(start_str, end_str, source_directory, save_name, rlist_call):
 
     data_dict = {}
     for i in np.arange(len(rivers_list)):
-        river_name = rivers_list[i][0] + ' flow [units]'
+        river_name = rivers_list[i][1] + ' [kg/m2/s]'
         data_dict[river_name] = result[:,i]
     df_data = pd.DataFrame(data_dict)
 
