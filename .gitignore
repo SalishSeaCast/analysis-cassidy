@@ -147,6 +147,7 @@ cython_debug/
 
 # Ignore data files
 *.csv
+*.xlsx
 
 
 notebooks/river_dye_trace/res2_namelist/namelist_cfg
