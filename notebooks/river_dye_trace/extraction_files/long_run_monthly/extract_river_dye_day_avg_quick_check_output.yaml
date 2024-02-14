@@ -8,8 +8,8 @@ dataset:
 
 dask cluster: salish_cluster.yaml
 
-start date: 2019-01-11
-end date: 2019-01-11
+start date: 2017-01-01
+end date: 2018-12-31
 extract variables:
   # - nooksack_river
   # - skagit_river
