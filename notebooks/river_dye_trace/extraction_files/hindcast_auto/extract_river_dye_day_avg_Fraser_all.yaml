@@ -2,14 +2,14 @@
 # all regions
 
 dataset:
-  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-long_run.yaml
+  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-hindcast_auto.yaml
   time base: day
   variables group: river tracers
 
 dask cluster: salish_cluster.yaml
 
-start date: 2017-01-01
-end date: 2020-01-01
+start date: 2012-01-01
+end date: 2012-04-30
 extract variables:
   # - nooksack_river
   # - skagit_river
@@ -39,4 +39,4 @@ selection:
 extracted dataset:
   name: SalishSeaCast_river_trace_day_avg_Fraser_all
   description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
-  dest dir: /ocean/cdonaldson/research_runs/long_dye_tracers/extractions
+  dest dir: /ocean/cdonaldson/research_runs/hindcast_auto/extractions
