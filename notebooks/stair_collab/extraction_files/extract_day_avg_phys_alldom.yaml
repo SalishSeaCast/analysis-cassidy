@@ -1,0 +1,31 @@
+# Reshapr configuration to extract day-averages of river dye variables
+# all regions
+
+dataset:
+  model profile: SalishSeaCast-201905.yaml
+  time base: day
+  variables group: physics tracers
+
+dask cluster: salish_cluster.yaml
+
+start date: 2018-01-01
+end date: 2018-12-31
+extract variables:
+  - vosaline
+  - votemper
+
+selection:
+  depth:
+    # NOTE: use depth level numbers, not depths in meters
+    depth max: 40
+  grid y:
+    y min: 0
+    y max: 898
+  grid x:
+    x min: 0
+    x max: 398
+
+extracted dataset:
+  name: SalishSeaCast_day_avg_phys_tracers
+  description: Day-averaged river dye extracted from SalishSeaCast v201905 NEMO model
+  dest dir: /ocean/cdonaldson/stair_extractions
