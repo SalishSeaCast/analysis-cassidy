@@ -11,18 +11,18 @@ dask cluster: salish_cluster.yaml
 start date: 2012-01-01
 end date: 2014-01-01
 extract variables:
-  # - nooksack_river
-  # - skagit_river
-  # - snohomish_river
-  # - nisqually_river
-  # - elwha_river
-  # - cowichan_river
-  # - nanaimo_river
-  # - puntledge_river
-  # - salmon_river
-  # - homathko_river
-  # - squamish_river
-  - fraser_river
+  - nooksack_river
+  - skagit_river
+  - snohomish_river
+  - nisqually_river
+  - elwha_river
+  - cowichan_river
+  - nanaimo_river
+  - puntledge_river
+  - salmon_river
+  - homathko_river
+  - squamish_river
+  # - fraser_river
   # - other_rivers
 
 selection:
@@ -37,6 +37,6 @@ selection:
     x max: 398
 
 extracted dataset:
-  name: SalishSeaCast_river_trace_day_avg_Fraser_all
+  name: SalishSeaCast_river_trace_day_avg_subset_all
   description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
   dest dir: /ocean/cdonaldson/research_runs/hindcast_auto/extractions
