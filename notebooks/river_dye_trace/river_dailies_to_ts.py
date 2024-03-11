@@ -17,7 +17,8 @@ def main(start_str, end_str, source_directory, save_name, rlist_call):
     # Check if the correct number of arguments is provided
     if len(sys.argv) != 6:
         print("Usage: python river_dailies_to_ts.py yyyymmdd_start yyyymmdd_end source_dir save_name river_list\
-              \n files save as 'river_dailies_to_ts_save_name_yyyymmdd_start_yyyymmdd_end.csv'")
+              \n files save as 'river_dailies_to_ts_save_name_yyyymmdd_start_yyyymmdd_end.csv'\
+              \n river forcings are in source_dir='/results/forcing/rivers/'")
         
 
     def files_between_dates(start_date, end_date, directory):
