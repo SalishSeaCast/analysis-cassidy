@@ -17,15 +17,15 @@ extract variables:
 selection:
   depth:
     # NOTE: use depth level numbers, not depths in meters
-    depth max: 40
+    depth max: 10
   grid y:
-    y min: 0
-    y max: 898
+    y min: 445
+    y max: 485
   grid x:
-    x min: 0
-    x max: 398
+    x min: 305
+    x max: 345
 
 extracted dataset:
-  name: SalishSeaCast_day_avg_phys_tracers
+  name: SalishSeaCast_day_avg_phys_tracers_subsection
   description: Day-averaged river dye extracted from SalishSeaCast v201905 NEMO model
   dest dir: /ocean/cdonaldson/stair_extractions
