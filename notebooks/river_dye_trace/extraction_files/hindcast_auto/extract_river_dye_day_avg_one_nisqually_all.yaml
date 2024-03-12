@@ -1,0 +1,42 @@
+# Reshapr configuration to extract day-averages of river dye variables
+# all regions
+
+dataset:
+  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-hindcast_auto.yaml
+  time base: day
+  variables group: river tracers
+
+dask cluster: salish_cluster.yaml
+
+start date: 2012-01-01
+end date: 2015-01-01
+extract variables:
+  # - nooksack_river
+  # - skagit_river
+  # - snohomish_river
+  - nisqually_river
+  # - elwha_river
+  # - cowichan_river
+  # - nanaimo_river
+  # - puntledge_river
+  # - salmon_river
+  # - homathko_river
+  # - squamish_river
+  # - fraser_river
+  # - other_rivers
+
+selection:
+  depth:
+    # NOTE: use depth level numbers, not depths in meters
+    depth max: 40
+  grid y:
+    y min: 0
+    y max: 898
+  grid x:
+    x min: 0
+    x max: 398
+
+extracted dataset:
+  name: SalishSeaCast_river_trace_day_avg_one_nisqually_all
+  description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
+  dest dir: /ocean/cdonaldson/research_runs/hindcast_auto/extractions
