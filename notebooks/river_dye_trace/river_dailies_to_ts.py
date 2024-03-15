@@ -6,6 +6,7 @@ import sys
 import pandas as pd
 from datetime import datetime
 import salishsea_tools.river_202108 as rivers  # if you want to find river inputs for a different (future?) version of rivers, you'll have to change this the files_between_dates fn!
+import salishsea_tools.river_201702 as rivers2
 
 rlist_dict = {'test': [['fraser', 'Fraser'], ['skagit', 'Skagit1']],
               'fraser': [['fraser', 'Fraser']],
@@ -13,18 +14,22 @@ rlist_dict = {'test': [['fraser', 'Fraser'], ['skagit', 'Skagit1']],
                           ['jdf', 'Elwha'], ['evi_s', 'Cowichan1'], ['evi_s', 'Nanaimo1'], ['evi_s', 'Puntledge'], ['evi_n', 'SalmonSayward'], ['bute', 'Homathko'], \
                             ['howe', 'Squamish']]}
 
-def main(start_str, end_str, source_directory, save_name, rlist_call):
+def main(start_str, end_str, source_directory, save_name, rlist_call, river_ver):
     # Check if the correct number of arguments is provided
-    if len(sys.argv) != 6:
-        print("Usage: python river_dailies_to_ts.py yyyymmdd_start yyyymmdd_end source_dir save_name river_list\
+    if len(sys.argv) != 7:
+        print("Usage: python river_dailies_to_ts.py yyyymmdd_start yyyymmdd_end source_dir save_name river_list river_ver\
               \n files save as 'river_dailies_to_ts_save_name_yyyymmdd_start_yyyymmdd_end.csv'\
               \n river forcings are in source_dir='/results/forcing/rivers/'")
         
 
-    def files_between_dates(start_date, end_date, directory):
+    def files_between_dates(start_date, end_date, directory, river_ver):
         files = []
         file_dates = []
-        date_pattern = r'R202108Dailies_y(\d{4})m(\d{2})d(\d{2})'  # regex pattern to specifically match the 202108Dailies - CHANGE IF DIFF VERSION
+
+        if (river_ver == '202108'):
+            date_pattern = r'R202108Dailies_y(\d{4})m(\d{2})d(\d{2})'  # regex pattern to specifically match the 202108Dailies
+        if (river_ver == '201702'):
+            date_pattern = r'R201702DFraCElse_y(\d{4})m(\d{2})d(\d{2})'  # regex pattern to specifically match the R201702DFraCElse
         
         for filename in sorted(os.listdir(directory)):
             match = re.search(date_pattern, filename)
@@ -40,7 +45,12 @@ def main(start_str, end_str, source_directory, save_name, rlist_call):
 
     # the entire set of rivers and their w_shed/r_call pairs is located in /ocean/cdonaldson/MEOPAR/tools/SalishSeaTools/salishsea_tools/river_202108.py
     # this fn looks up and returns the river input coordinates and widths
-    def river_bounds(river):
+    def river_bounds(river, river_ver):
+
+        if (river_ver == '202108'):
+            import salishsea_tools.river_202108 as rivers  # match locations for the 202108Dailies
+        if (river_ver == '201702'):
+            import salishsea_tools.river_201702 as rivers  # match locations for the R201702DFraCElse
 
         w_shed = river[0]
         r_call = river[1]
@@ -55,7 +65,7 @@ def main(start_str, end_str, source_directory, save_name, rlist_call):
     # np.array([[1, 2, 3], [4, 5, 6], [7, 8 ,9]])[0:1, 2:3] = array([[3]]), specifies the row then the column
 
 
-    def files_to_timeseries(directory, file_names, rivers):
+    def files_to_timeseries(directory, file_names, rivers, river_ver):
 
         num_rows = len(file_names)
         num_cols = len(rivers)
@@ -71,7 +81,7 @@ def main(start_str, end_str, source_directory, save_name, rlist_call):
             array = ds['rorunoff'].values[0, :, :]  # og shape is (1, 898, 398)
 
             for river in rivers:
-                y, dy, x, dx = river_bounds(river)
+                y, dy, x, dx = river_bounds(river, river_ver)
                 result[row_idx, col_idx] = array[y:y+dy, x:x+dx].sum()  # take the sum in the box, slices are not inclusive
                 col_idx += 1
             
@@ -88,8 +98,8 @@ def main(start_str, end_str, source_directory, save_name, rlist_call):
 
     rivers_list = rlist_dict[rlist_call]
 
-    file_names, file_dates = files_between_dates(start_date, end_date, source_directory)
-    result = files_to_timeseries(source_directory, file_names, rivers_list)
+    file_names, file_dates = files_between_dates(start_date, end_date, source_directory, river_ver)
+    result = files_to_timeseries(source_directory, file_names, rivers_list, river_ver)
 
     data_dict = {}
     for i in np.arange(len(rivers_list)):
@@ -113,4 +123,5 @@ if __name__ == "__main__":
     source_directory = sys.argv[3]
     save_name = sys.argv[4]
     rlist_call = sys.argv[5]
-    main(start_str, end_str, source_directory, save_name, rlist_call)
+    river_ver = sys.argv[6]
+    main(start_str, end_str, source_directory, save_name, rlist_call, river_ver)
