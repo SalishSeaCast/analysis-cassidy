@@ -8,8 +8,8 @@ dataset:
 
 dask cluster: salish_cluster.yaml
 
-start date: 2021-01-01
-end date: 2021-12-31
+start date: 2023-01-01
+end date: 2023-12-31
 extract variables:
   - nooksack_river
   - skagit_river
@@ -25,18 +25,17 @@ extract variables:
   - fraser_river
   - other_rivers
 
-selection:
-  depth:
-    # NOTE: use depth level numbers, not depths in meters
-    depth max: 40
-  grid y:
-    y min: 0
-    y max: 898
-  grid x:
-    x min: 0
-    x max: 398
+resample:
+  # A pandas time series frequency offset alias with an optional multiplier digit prefix
+  # For monthly resampling use MS so that time values are mid-month.
+  time interval: 1M
+  # A xarray dataset reduction method to use for aggregation.
+  # See the "resampling and grouped operations" subsection in the Time Series Data
+  # section of the xarray User Guide.
+  # default: mean
+  aggregation: mean
 
 extracted dataset:
-  name: SalishSeaCast_river_trace_day_avg_allR_00_40
+  name: SalishSeaCast_river_trace_day_avg_allR_00_40_res1M
   description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
   dest dir: /ocean/cdonaldson/research_runs/hindcast_auto/extractions
