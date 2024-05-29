@@ -4,7 +4,7 @@
 dataset:
   model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-hindcast_auto.yaml
   time base: day
-  variables group: river tracers
+  variables group: physics tracers
 
 dask cluster: salish_cluster.yaml
 
