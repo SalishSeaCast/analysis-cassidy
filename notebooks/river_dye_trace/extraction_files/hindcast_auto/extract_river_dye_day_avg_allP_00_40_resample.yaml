@@ -1,0 +1,30 @@
+# Reshapr configuration to extract day-averages of river dye variables
+# all regions
+
+dataset:
+  model profile: /ocean/cdonaldson/MOAD/analysis-cassidy/notebooks/river_dye_trace/model_profiles/SalishSeaCast-202111-river_dye_trace-hindcast_auto.yaml
+  time base: day
+  variables group: river tracers
+
+dask cluster: salish_cluster.yaml
+
+start date: 2019-01-01
+end date: 2019-12-31
+extract variables:
+  - votemper
+  - vosaline
+
+resample:
+  # A pandas time series frequency offset alias with an optional multiplier digit prefix
+  # For monthly resampling use MS so that time values are mid-month.
+  time interval: 1M
+  # A xarray dataset reduction method to use for aggregation.
+  # See the "resampling and grouped operations" subsection in the Time Series Data
+  # section of the xarray User Guide.
+  # default: mean
+  aggregation: mean
+
+extracted dataset:
+  name: SalishSeaCast_river_trace_day_avg_allP_00_40_res1M
+  description: Day-averaged river dye extracted from SalishSeaCast v202111 NEMO model
+  dest dir: /ocean/cdonaldson/research_runs/hindcast_auto/extractions
