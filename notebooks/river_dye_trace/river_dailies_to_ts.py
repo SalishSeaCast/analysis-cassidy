@@ -12,7 +12,16 @@ rlist_dict = {'test': [['fraser', 'Fraser'], ['skagit', 'Skagit1']],
               'fraser': [['fraser', 'Fraser']],
               'Cassidy': [['fraser', 'Nooksack'], ['skagit', 'Skagit1'], ['skagit', 'SnohomishAllenQuilceda'], ['puget', 'NisquallyMcAllister'], \
                           ['jdf', 'Elwha'], ['evi_s', 'Cowichan1'], ['evi_s', 'Nanaimo1'], ['evi_s', 'Puntledge'], ['evi_n', 'SalmonSayward'], ['bute', 'Homathko'], \
+                            ['howe', 'Squamish']],
+              'Cassidy_all': [['fraser', 'Fraser'], ['fraser', 'Nooksack'], ['skagit', 'Skagit1'], ['skagit', 'SnohomishAllenQuilceda'], ['puget', 'NisquallyMcAllister'], \
+                          ['jdf', 'Elwha'], ['evi_s', 'Cowichan1'], ['evi_s', 'Nanaimo1'], ['evi_s', 'Puntledge'], ['evi_n', 'SalmonSayward'], ['bute', 'Homathko'], \
                             ['howe', 'Squamish']]}
+
+mesh = xr.open_dataset('/home/sallen/MEOPAR/grid/mesh_mask202108.nc')
+# the mask is 1 where there is water, we want the opposite.  The meshmask has an extra dimension, hence the [0]
+tmask = 1 - mesh.tmask[0]
+area = ((1-tmask) * mesh.e1t[0] * mesh.e2t[0]).rename({'z':'depth', 'y':'gridY', 'x':'gridX'})[0]
+rho = 1026
 
 def main(start_str, end_str, source_directory, save_name, rlist_call, river_ver):
     # Check if the correct number of arguments is provided
@@ -82,7 +91,13 @@ def main(start_str, end_str, source_directory, save_name, rlist_call, river_ver)
 
             for river in rivers:
                 y, dy, x, dx = river_bounds(river, river_ver)
-                result[row_idx, col_idx] = array[y:y+dy, x:x+dx].sum()  # take the sum in the box, slices are not inclusive
+                # total_area = np.array(area)[y:y+dy, x:x+dx].sum()
+                # total_kgm2 = array[y:y+dy, x:x+dx].sum()
+                slice_area = np.array(area)[y:y+dy, x:x+dx]
+                slice_kgm2 = array[y:y+dy, x:x+dx]
+                total = slice_area * slice_kgm2
+                result[row_idx, col_idx] = total.sum() / rho # take the sum in the box, slices are not inclusive
+                 
                 col_idx += 1
             
             ds.close()  # close the dataset for this day before opening the next one
@@ -103,7 +118,8 @@ def main(start_str, end_str, source_directory, save_name, rlist_call, river_ver)
 
     data_dict = {}
     for i in np.arange(len(rivers_list)):
-        river_name = rivers_list[i][1] + ' [kg/m2/s]'
+        # river_name = rivers_list[i][1] + ' [kg/m2/s]'
+        river_name = rivers_list[i][1] + ' [m^3/s]'
         data_dict[river_name] = result[:,i]
     df_data = pd.DataFrame(data_dict)
 
@@ -112,7 +128,7 @@ def main(start_str, end_str, source_directory, save_name, rlist_call, river_ver)
 
     df_all = pd.concat([df_metas, df_data], axis=1)
 
-    file_to_save_name = 'river_dailies_to_ts_{}_{}_{}.csv'.format(save_name, start_str, end_str)
+    file_to_save_name = 'river_dailies_to_vol_ts_{}_{}_{}.csv'.format(save_name, start_str, end_str)
     df_all.to_csv(file_to_save_name)
 
     print('File saved as {}'.format(file_to_save_name))
