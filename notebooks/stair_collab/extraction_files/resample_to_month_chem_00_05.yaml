@@ -1,0 +1,33 @@
+# Example configuration file for `reshapr extract` sub-command
+# to resample day-averaged fields to month-averaged
+
+dataset:
+  model profile: SalishSeaCast-202111-salish.yaml
+  time base: day
+  variables group: chemistry
+
+dask cluster: salish_cluster.yaml
+
+start date: 2015-01-01
+end date: 2015-12-31
+
+extract variables:
+  - dissolved_inorganic_carbon
+  - total_alkalinity
+
+resample:
+  # A pandas time series frequency offset alias with an optional multiplier digit prefix
+  # For monthly resampling use MS so that time values are mid-month.
+  time interval: 1MS
+  # A xarray dataset reduction method to use for aggregation.
+  # See the "resampling and grouped operations" subsection in the Time Series Data
+  # section of the xarray User Guide.
+  # default: mean
+  aggregation: mean
+
+extracted dataset:
+  name: SalishSeaCast_mon_avg_chem_00_05
+  description: Mon-averaged chemistry extracted from SalishSeaCast v202111 NEMO model
+  deflate: True
+  format: NETCDF4
+  dest dir: /ocean/cdonaldson/stair_extractions
