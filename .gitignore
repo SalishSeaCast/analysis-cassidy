@@ -145,7 +145,7 @@ cython_debug/
 *.gif
 *.mp4
 
-# Ignore data files
+# Ignore data filesf
 *.csv
 *.xlsx
 
