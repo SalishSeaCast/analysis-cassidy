@@ -15,9 +15,21 @@ rlist_dict = {'test': [['fraser', 'Fraser'], ['skagit', 'Skagit1']],
                             ['howe', 'Squamish']],
               'Cassidy_all': [['fraser', 'Fraser'], ['fraser', 'Nooksack'], ['skagit', 'Skagit1'], ['skagit', 'SnohomishAllenQuilceda'], ['puget', 'NisquallyMcAllister'], \
                           ['jdf', 'Elwha'], ['evi_s', 'Cowichan1'], ['evi_s', 'Nanaimo1'], ['evi_s', 'Puntledge'], ['evi_n', 'SalmonSayward'], ['bute', 'Homathko'], \
-                            ['howe', 'Squamish']]}
+                            ['howe', 'Squamish']],
+                'puget': [['puget','Johnson'], ['puget','Jimmycomelately'], ['puget','SalmonSnow'], ['puget','Chimacum'], ['puget','Thorndike'], ['puget','Torboo'], \
+                             ['puget','LittleBigQuilcene'], ['puget','Dosewalips'], ['puget','Duckabush'], ['puget','Fulton'], ['puget','Waketick'], ['puget','HammaHamma'],\
+                             ['puget','Jorsted'], ['puget','Eagle'], ['puget','Lilliwaup'], ['puget','Finch'], ['puget','Skokomish'], ['puget','Rendsland'], ['puget','Tahuya'], \
+                             ['puget','Mission'], ['puget','Union'], ['puget','Coulter'], ['puget','Minter'], ['puget','Burley'], ['puget','Olalla'], ['puget','Blackjack'],\
+                             ['puget','ClearBarker'], ['puget','BigValley'], ['puget','BigBear'], ['puget','Swaback'], ['puget','Stavis'], ['puget','Anderson'], ['puget','Dewatta'], \
+                             ['puget','Sherwood'], ['puget','DeerJohnsGoldboroughMill'],['puget','Skookum'], ['puget','KennedySchneider'], ['puget','PerryMcClane'],\
+                             ['puget','Deschutes'], ['puget','Woodward'], ['puget','Woodland'], ['puget','Chambers'], ['puget','NisquallyMcAllister'], \
+                             ['puget','Puyallup'], ['puget','Hylebas'], ['puget','Duwamish1'], ['puget','Duwamish2'], ['puget','CedarSammamish']],
+                'skagit': [['skagit', 'Skagit1'], ['skagit', 'Skagit2'], ['skagit', 'Samish'], ['skagit', 'JoeLeary'], ['skagit', 'Stillaguamish1'], \
+                           ['skagit', 'Stillaguamish2'], ['skagit', 'Stillaguamish3'], ['skagit', 'SnohomishAllenQuilceda'], ['skagit', 'Tulalip'], ['skagit', 'Mission']]}
+
 
 mesh = xr.open_dataset('/home/sallen/MEOPAR/grid/mesh_mask202108.nc')
+# mesh = xr.open_dataset('/home/sallen/MEOPAR/grid/mesh_mask201702.nc')
 # the mask is 1 where there is water, we want the opposite.  The meshmask has an extra dimension, hence the [0]
 tmask = 1 - mesh.tmask[0]
 area = ((1-tmask) * mesh.e1t[0] * mesh.e2t[0]).rename({'z':'depth', 'y':'gridY', 'x':'gridX'})[0]
