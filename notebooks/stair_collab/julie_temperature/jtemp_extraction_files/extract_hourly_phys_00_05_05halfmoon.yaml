@@ -22,8 +22,8 @@ selection:
     y min: 551
     y max: 552
   grid x:
-    x min: 256
-    x max: 257
+    x min: 249
+    x max: 250
 
 extracted dataset:
   name: SalishSeaCast_hourly_phys_00_05_halfmoon
