@@ -8,8 +8,8 @@ dataset:
 
 dask cluster: salish_cluster.yaml
 
-start date: 2024-03-01
-end date: 2025-12-03
+start date: 2025-07-15
+end date: 2025-10-04
 extract variables:
   - vosaline
   - votemper
@@ -19,13 +19,13 @@ selection:
     # NOTE: use depth level numbers, not depths in meters
     depth max: 5
   grid y:
-    y min: 468
-    y max: 469
+    y min: 896
+    y max: 897
   grid x:
-    x min: 334
-    x max: 335
+    x min: 45
+    x max: 46
 
 extracted dataset:
-  name: SalishSeaCast_hourly_phys_00_05_sharon
+  name: SalishSeaCast_hourly_phys_00_05_alder
   description: Hour-averaged physics extracted from SalishSeaCast v202111 NEMO model
   dest dir: /ocean/cdonaldson/stair_extractions/julie

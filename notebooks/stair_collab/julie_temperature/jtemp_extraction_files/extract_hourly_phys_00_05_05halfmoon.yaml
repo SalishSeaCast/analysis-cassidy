@@ -8,8 +8,8 @@ dataset:
 
 dask cluster: salish_cluster.yaml
 
-start date: 2024-05-29
-end date: 2024-09-15
+start date: 2025-01-09
+end date: 2025-12-05
 extract variables:
   - vosaline
   - votemper
